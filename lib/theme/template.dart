@@ -66,4 +66,10 @@ class ChessTextStyle {
     fontSize: 13,
     color: ChessColor.iceGrey,
   );
+
+  static final labelStyle = const TextStyle(
+    color: Color(0xFF0C2D48),
+    fontSize: 14,
+    fontWeight: FontWeight.w700,
+  );
 }

@@ -17,18 +17,22 @@ class SplashScreen extends StatelessWidget {
       }
     });
 
-    return Scaffold(
-      backgroundColor: ChessColor.navy,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image(image: AssetImage('assets/logo.png'), width: 100),
-            Text(
-              'Fident',
-              style: ChessTextStyle.king.copyWith(color: ChessColor.white),
-            ),
-          ],
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) {},
+      child: Scaffold(
+        backgroundColor: ChessColor.navy,
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image(image: AssetImage('assets/logo.png'), width: 100),
+              Text(
+                'Fident',
+                style: ChessTextStyle.king.copyWith(color: ChessColor.white),
+              ),
+            ],
+          ),
         ),
       ),
     );

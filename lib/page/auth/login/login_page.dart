@@ -10,20 +10,24 @@ class LoginPage extends GetView<LoginController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: ChessColor.navy,
+    return PopScope(
+      canPop: true,
+      onPopInvokedWithResult: (didPop, result) {},
+      child: Scaffold(
+        backgroundColor: ChessColor.navy,
 
-      body: TweenAnimationBuilder(
-        tween: Tween(begin: 40.0, end: 0.0),
-        duration: const Duration(milliseconds: 600),
-        curve: Curves.easeOut,
-        builder: (context, value, child) {
-          return Transform.translate(
-            offset: Offset(0, value),
-            child: Opacity(opacity: (40 - value) / 40, child: child),
-          );
-        },
-        child: _buildBody(context),
+        body: TweenAnimationBuilder(
+          tween: Tween(begin: 40.0, end: 0.0),
+          duration: const Duration(milliseconds: 600),
+          curve: Curves.easeOut,
+          builder: (context, value, child) {
+            return Transform.translate(
+              offset: Offset(0, value),
+              child: Opacity(opacity: (40 - value) / 40, child: child),
+            );
+          },
+          child: _buildBody(context),
+        ),
       ),
     );
   }
@@ -61,7 +65,11 @@ class LoginPage extends GetView<LoginController> {
                 Center(
                   child: Text(
                     "Sign in to your account",
-                    style: ChessTextStyle.rook,
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                        color: Color(0xFF0C2D48),
+                      ),
                   ),
                 ),
 

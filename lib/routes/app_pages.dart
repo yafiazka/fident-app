@@ -1,5 +1,6 @@
 import 'package:fident_app/core/bindings/login_binding.dart';
 import 'package:fident_app/core/bindings/main_binding.dart';
+import 'package:fident_app/core/bindings/register_binding.dart';
 import 'package:fident_app/main/main_page.dart';
 import 'package:fident_app/main/splash_screen.dart';
 import 'package:fident_app/page/auth/login/login_page.dart';
@@ -13,22 +14,26 @@ class AppPages {
 
   static final routes = [
     GetPage(name: Routes.splash, page: () => SplashScreen()),
+
     GetPage(
       name: Routes.login,
       page: () => LoginPage(),
       binding: LoginBinding(),
     ),
+
     GetPage(name: Routes.loginSuccess, page: () => const LoginSuccessPage()),
+
     GetPage(
       name: Routes.register,
       page: () => RegisterPage(),
-      binding: LoginBinding(),
+      binding: RegisterBinding(),
     ),
+
     GetPage(name: Routes.registerSuccess, page: () => RegisterSuccessPage()),
+
     GetPage(
       name: Routes.mainPage,
       page: () => const MainPage(),
-      participatesInRootNavigator: true,
       binding: MainBinding(),
     ),
   ];

@@ -10,41 +10,61 @@ class MainPage extends GetView<MainController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: ChessColor.navy,
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: _fab(),
-      bottomNavigationBar: _bottomNav(),
-      body: Obx(() {
-        switch (controller.tabIndex.value) {
-          case 0:
-            return HomePage();
-          case 1:
-            return Container(
-              alignment: Alignment.center,
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              color: ChessColor.white,
-              child: Text(
-                "We’re still working on this page to make it better. \nThank you for your patience",
-              ),
-            );
-          case 2:
-            return Container(
-              alignment: Alignment.center,
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              color: ChessColor.white,
-              child: Text(
-                "We’re still working on this page to make it better. \nThank you for your patience",
-              ),
-            );
-          case 3:
-            return ProfilePage();
-          default:
-            return HomePage();
+    DateTime? lastPressed;
+
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) {
+        final now = DateTime.now();
+
+        if (lastPressed == null ||
+            now.difference(lastPressed!) > const Duration(seconds: 2)) {
+          lastPressed = now;
+          Get.snackbar(
+            "Exit",
+            "Press back again to exit app",
+            snackPosition: SnackPosition.BOTTOM,
+          );
+        } else {
+          Get.close(1);
         }
-      }),
+      },
+      child: Scaffold(
+        backgroundColor: ChessColor.navy,
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: _fab(),
+        bottomNavigationBar: _bottomNav(),
+        body: Obx(() {
+          switch (controller.tabIndex.value) {
+            case 0:
+              return HomePage();
+            case 1:
+              return Container(
+                alignment: Alignment.center,
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
+                color: ChessColor.white,
+                child: Text(
+                  "We’re still working on this page to make it better. \nThank you for your patience",
+                ),
+              );
+            case 2:
+              return Container(
+                alignment: Alignment.center,
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
+                color: ChessColor.white,
+                child: Text(
+                  "We’re still working on this page to make it better. \nThank you for your patience",
+                ),
+              );
+            case 3:
+              return ProfilePage();
+            default:
+              return HomePage();
+          }
+        }),
+      ),
     );
   }
 
