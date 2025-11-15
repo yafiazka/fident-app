@@ -8,6 +8,7 @@ class MainController extends GetxController {
 
   RxString name = "".obs;
   RxString role = "".obs;
+  RxString email = "".obs;
 
   RxInt tabIndex = 0.obs;
 
@@ -30,6 +31,7 @@ class MainController extends GetxController {
     if (doc.exists) {
       name.value = doc["name"];
       role.value = doc["role"];
+      email.value = doc["email"];
     }
   }
 

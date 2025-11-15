@@ -1,5 +1,6 @@
 import 'package:fident_app/core/controller/main_controller.dart';
 import 'package:fident_app/page/home/home_page.dart';
+import 'package:fident_app/page/profile/profile_page.dart';
 import 'package:fident_app/theme/template.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -39,7 +40,7 @@ class MainPage extends GetView<MainController> {
               ),
             );
           case 3:
-            return Center(child: Text("Profile Page"));
+            return ProfilePage();
           default:
             return HomePage();
         }
