@@ -1,4 +1,4 @@
-import 'package:fident_app/page/auth/controller/login_controller.dart';
+import 'package:fident_app/core/controller/login_controller.dart';
 import 'package:fident_app/routes/app_pages.dart';
 import 'package:fident_app/theme/template.dart';
 import 'package:fident_app/widgets/input_file.dart';
@@ -77,7 +77,7 @@ class LoginPage extends GetView<LoginController> {
 
                 InputField(
                   label: "Password:",
-                  controller: controller.passC,
+                  controller: controller.passwordC,
                   obscure: true,
                   validator: controller.validatePassword,
                 ),

@@ -1,5 +1,5 @@
+import 'package:fident_app/core/services/auth_storage_service.dart';
 import 'package:fident_app/routes/app_pages.dart';
-import 'package:fident_app/services/auth_storage_service.dart';
 import 'package:fident_app/theme/template.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

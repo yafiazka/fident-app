@@ -1,4 +1,4 @@
-import 'package:fident_app/page/auth/controller/register_controller.dart';
+import 'package:fident_app/core/controller/register_controller.dart';
 import 'package:fident_app/widgets/input_file.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
