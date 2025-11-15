@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1005857686622",
+    "project_id": "fident-app",
+    "storage_bucket": "fident-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1005857686622:android:f45837f805f19de0d9e0cf",
+        "android_client_info": {
+          "package_name": "com.fident.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANPwxKMinQuJLeEu4wJEI0EXBkoJpD8zI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
