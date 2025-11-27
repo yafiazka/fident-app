@@ -1,11 +1,19 @@
+import 'dart:convert';
+
 import 'package:fident_app/theme/template.dart';
 import 'package:flutter/material.dart';
 
 class HeaderCard extends StatelessWidget {
   final String name;
   final String role;
+  final String img;
 
-  const HeaderCard({super.key, required this.name, required this.role});
+  const HeaderCard({
+    super.key,
+    required this.name,
+    required this.role,
+    required this.img,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +32,12 @@ class HeaderCard extends StatelessWidget {
       ),
       child: Row(
         children: [
-          const CircleAvatar(
+          CircleAvatar(
             radius: 24,
             backgroundColor: ChessColor.white,
-            backgroundImage: AssetImage('assets/icon_user.png'),
+            backgroundImage: img.isNotEmpty
+                ? MemoryImage(base64Decode(img))
+                : const AssetImage('assets/icon_user.png') as ImageProvider,
           ),
 
           const SizedBox(width: 12),
