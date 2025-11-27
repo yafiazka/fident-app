@@ -1,6 +1,7 @@
 import 'package:fident_app/core/controller/main_controller.dart';
 import 'package:fident_app/page/home/home_page.dart';
 import 'package:fident_app/page/profile/profile_page.dart';
+import 'package:fident_app/routes/app_pages.dart';
 import 'package:fident_app/theme/template.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -78,7 +79,9 @@ class MainPage extends GetView<MainController> {
           width: 80,
           child: FloatingActionButton(
             elevation: 0,
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed(Routes.attendanceScan);
+            },
             backgroundColor: ChessColor.highlight,
             shape: CircleBorder(
               side: BorderSide(color: ChessColor.navy, width: 4),

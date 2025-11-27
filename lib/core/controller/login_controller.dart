@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fident_app/core/services/auth_storage_service.dart';
 import 'package:fident_app/routes/app_pages.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -40,6 +41,8 @@ class LoginController extends GetxController {
       final uid = credential.user!.uid;
 
       box.write("uid", uid);
+
+      authStorage.saveUser(uid);
 
       Get.offAllNamed(Routes.mainPage);
     } on FirebaseAuthException catch (e) {

@@ -1,11 +1,15 @@
+import 'package:fident_app/routes/app_pages.dart';
 import 'package:fident_app/theme/template.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class AttendanceCard extends StatelessWidget {
   const AttendanceCard({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final formattedDate = DateTime.now().toLocal();
+
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -24,7 +28,7 @@ class AttendanceCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Day (DD MM YYYY)",
+            "${formattedDate.day}-${formattedDate.month}-${formattedDate.year} ${formattedDate.hour}:${formattedDate.minute}",
             style: ChessTextStyle.pawn.copyWith(fontSize: 12),
           ),
 
@@ -55,7 +59,9 @@ class AttendanceCard extends StatelessWidget {
             width: double.infinity,
             height: 44,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.toNamed(Routes.attendanceScan);
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green.shade400,
                 shape: RoundedRectangleBorder(

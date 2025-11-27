@@ -24,6 +24,7 @@ class HomePage extends GetView<MainController> {
                 () => HeaderCard(
                   name: controller.name.value,
                   role: controller.role.value,
+                  img: controller.faceBase64.value,
                 ),
               ),
 
@@ -34,7 +35,7 @@ class HomePage extends GetView<MainController> {
               const Divider(),
               const SizedBox(height: 12),
 
-              const HistoryList(),
+              HistoryList(),
             ],
           ),
         ),

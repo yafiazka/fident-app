@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:fident_app/core/controller/main_controller.dart';
 import 'package:fident_app/theme/template.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -9,6 +11,8 @@ class ProfilePage extends GetView<MainController> {
 
   @override
   Widget build(BuildContext context) {
+    final String img = controller.faceBase64.value;
+
     return Container(
       color: Colors.white,
       width: double.infinity,
@@ -41,15 +45,15 @@ class ProfilePage extends GetView<MainController> {
               child: Row(
                 children: [
                   // ICON
-                  Container(
-                    width: 45,
-                    height: 45,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.grey.shade200,
-                    ),
-                    child: const Icon(Icons.person, size: 28),
+                  CircleAvatar(
+                    radius: 24,
+                    backgroundColor: ChessColor.white,
+                    backgroundImage: img.isNotEmpty
+                        ? MemoryImage(base64Decode(img))
+                        : const AssetImage('assets/icon_user.png')
+                              as ImageProvider,
                   ),
+
                   const SizedBox(width: 12),
 
                   // NAME & EMAIL
@@ -118,11 +122,14 @@ class ProfilePage extends GetView<MainController> {
         children: [
           Icon(icon, color: ChessColor.navy),
           const SizedBox(width: 12),
-          Text(
-            title,
-            style: ChessTextStyle.pawn.copyWith(
-              fontSize: 14,
-              color: ChessColor.black,
+          Expanded(
+            child: Text(
+              title,
+              style: ChessTextStyle.pawn.copyWith(
+                fontSize: 14,
+                color: ChessColor.black,
+              ),
+              overflow: TextOverflow.ellipsis,
             ),
           ),
         ],

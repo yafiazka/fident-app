@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_storage/get_storage.dart';
 
 class AuthStorageService {
@@ -12,11 +13,16 @@ class AuthStorageService {
     return box.read(_key);
   }
 
-  void clear() {
-    box.remove(_key);
+  bool get isLoggedIn {
+    final uid = getUser();
+    final firebaseUser = FirebaseAuth.instance.currentUser;
+    return uid != null && firebaseUser != null;
   }
 
-  bool get isLoggedIn => getUser() != null;
+  void clear() {
+    box.remove(_key);
+    FirebaseAuth.instance.signOut();
+  }
 }
 
 final authStorage = AuthStorageService();

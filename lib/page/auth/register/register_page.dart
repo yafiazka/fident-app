@@ -202,6 +202,59 @@ class RegisterPage extends GetView<RegisterController> {
                     );
                   }),
 
+                  SizedBox(height: 20),
+
+                  Text("Face Photo:", style: ChessTextStyle.labelStyle),
+                  const SizedBox(height: 8),
+
+                  Obx(() {
+                    return GestureDetector(
+                      onTap: () {
+                        Get.bottomSheet(
+                          Container(
+                            color: Colors.white,
+                            height: 150,
+                            child: Column(
+                              children: [
+                                ListTile(
+                                  leading: Icon(Icons.camera_alt),
+                                  title: Text("Camera"),
+                                  onTap: () => controller.pickCamera(),
+                                ),
+                                ListTile(
+                                  leading: Icon(Icons.photo),
+                                  title: Text("Gallery"),
+                                  onTap: () => controller.pickGallery(),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        height: 140,
+                        width: 140,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(color: Colors.grey),
+                          image: controller.faceFile.value != null
+                              ? DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: FileImage(controller.faceFile.value!),
+                                )
+                              : null,
+                        ),
+                        child: controller.faceFile.value == null
+                            ? Icon(
+                                Icons.camera_alt,
+                                size: 50,
+                                color: Colors.grey,
+                              )
+                            : null,
+                      ),
+                    );
+                  }),
+
                   const SizedBox(height: 28),
 
                   const Text(
@@ -209,6 +262,8 @@ class RegisterPage extends GetView<RegisterController> {
                     style: TextStyle(color: Colors.grey, fontSize: 14),
                   ),
                   const SizedBox(height: 20),
+
+                  const SizedBox(height: 28),
 
                   Obx(() {
                     return SizedBox(
